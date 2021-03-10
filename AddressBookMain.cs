@@ -72,37 +72,14 @@ namespace AddressBook
                 Console.WriteLine("-------");
             }
 
-           Console.WriteLine("Enter the name to edit :");
-            string editName = Console.ReadLine();
+           Console.WriteLine("Enter the name to delete :");
+            string deleteName = Console.ReadLine();
 
-            if (addressBook.contactsMap.ContainsKey(editName))
+            if (addressBook.contactsMap.ContainsKey(deleteName))
             {
-                Contact foundContact = addressBook.contactsMap[editName];
-
-                Console.WriteLine("Enter your first name is : ");
-                foundContact.firstName = Console.ReadLine();
-
-                Console.WriteLine("Enter your last name is : ");
-                foundContact.lastName = Console.ReadLine();
-
-                Console.WriteLine("Enter your address is : ");
-                foundContact.address = Console.ReadLine();
-
-                Console.WriteLine("Enter your city is : ");
-                foundContact.city = Console.ReadLine();
-
-                Console.WriteLine("Enter your state is : ");
-                foundContact.state = Console.ReadLine();
-
-                Console.WriteLine("Enter your Zip is : ");
-                foundContact.zip = Console.ReadLine();
-
-                Console.WriteLine("Enter your phone number is : ");
-                foundContact.phoneNumber = Console.ReadLine();
-
-                Console.WriteLine("Enter your Email is : ");
-                foundContact.email = Console.ReadLine();
-
+                Contact foundContact = addressBook.contactsMap[deleteName];
+                addressBook.contacts.Remove(foundContact);
+                
             }
 
             foreach (Contact i in addressBook.contacts)
