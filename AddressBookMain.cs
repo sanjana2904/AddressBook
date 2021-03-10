@@ -1,15 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace AddressBook
 {
     class AddressBookMain
     {
+
+        LinkedList<Contact> contacts = new LinkedList<Contact>();
+
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to AddressBook" );
 
+            AddressBookMain addressBook = new AddressBookMain();
+
             Contact contact1 = new Contact();
-            
+      
             Console.WriteLine("Enter your first name is : ");
             contact1.firstName = Console.ReadLine();
             
@@ -33,6 +39,8 @@ namespace AddressBook
 
             Console.WriteLine("Enter your Email is : ");
             contact1.email = Console.ReadLine();
+
+            addressBook.contacts.AddLast(contact1);
 
             Console.WriteLine("First name is : " + contact1.firstName );
             Console.WriteLine("Last name is : " + contact1.lastName);
