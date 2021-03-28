@@ -81,6 +81,7 @@ namespace AddressBook
             Contact contact2 = new Contact();
             Contact contact3 = new Contact();
             Contact contact4 = new Contact();
+            
 
             contact1.firstName = "Ajith";           
             contact1.lastName = "K";
@@ -117,6 +118,12 @@ namespace AddressBook
             contact4.zip = "605746";
             contact4.phoneNumber = "76335629";
             contact4.email = "ddd@gmail.com";
+
+            Contact contact5 = new Contact();
+            contact5.Initialize("C:\\Users\\sanja\\source\\repos\\AddressBook\\Example.txt");
+            Console.WriteLine(contact5);
+
+
 
             addressBook.contacts.AddLast(contact1);
 
