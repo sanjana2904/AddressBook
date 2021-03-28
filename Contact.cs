@@ -16,6 +16,17 @@ namespace AddressBook
         public string phoneNumber;
         public string email;
 
+        public override bool Equals(object obj)
+        {
+            Contact c = (Contact)obj;
+            return firstName.Equals(c.firstName);
+        }
+
+        public override int GetHashCode()
+        {
+            return firstName.GetHashCode();
+        }
+
         public void Print()
         {
             Console.WriteLine("firstName is : " + firstName);
@@ -27,6 +38,8 @@ namespace AddressBook
             Console.WriteLine("phoneNumber is : " + phoneNumber);
             Console.WriteLine("email is :" + email);
         }
+
+
 
     }
 }
