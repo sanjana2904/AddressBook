@@ -25,8 +25,7 @@ namespace AddressBook
             addressBook2.name = "Personal";
 
             Dictionary<string, AddressBookMain> addressBookDict = new Dictionary<string, AddressBookMain>();
-
-
+          
             addressBookDict.Add("Home", addressBook);
             addressBookDict.Add("Business", addressBook1);
             addressBookDict.Add("Personal", addressBook2);
@@ -37,7 +36,7 @@ namespace AddressBook
             Contact contact3 = new Contact();
             Contact contact4 = new Contact();
 
-            contact1.firstName = "Vijay";           
+            contact1.firstName = "Ajith";           
             contact1.lastName = "K";
             contact1.address = "2/101, ram street";
             contact1.city = "Bangalore";           
@@ -74,9 +73,38 @@ namespace AddressBook
             contact4.email = "ddd@gmail.com";
 
             addressBook.contacts.AddLast(contact1);
-            addressBook.contacts.AddLast(contact2);
-            addressBook.contacts.AddLast(contact3);
-            addressBook.contacts.AddLast(contact4);
+
+            if (addressBook.contacts.Find(contact2) == null)
+            {
+                Console.WriteLine("Added contact2");
+                addressBook.contacts.AddLast(contact2);
+            }
+            else
+            {
+                Console.WriteLine("Not Added contact2");
+            }
+
+
+            if (addressBook.contacts.Find(contact3) == null)
+            {
+                Console.WriteLine("Added contact3");
+                addressBook.contacts.AddLast(contact3);
+            }
+            else
+            {
+                Console.WriteLine("Not Added contact3");
+            }
+
+            if (addressBook.contacts.Find(contact4) == null)
+            {
+                Console.WriteLine("Added contact4");
+                addressBook.contacts.AddLast(contact4);
+            }
+            else
+            {
+                Console.WriteLine("Not Added contact4");
+            }
+
 
             addressBook.contactsMap.Add("Vijay", contact1);
             addressBook.contactsMap.Add("Ajith", contact2);
