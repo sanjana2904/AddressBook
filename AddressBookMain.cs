@@ -19,7 +19,13 @@ namespace AddressBook
            List<Contact> sortedContacts = contacts.OrderBy(c => c.firstName).ToList();
             contacts = new LinkedList<Contact>(sortedContacts);
         }
-          
+
+        public void SortByState()
+        {
+            List<Contact> sortedContacts = contacts.OrderBy(c => c.state).ToList();
+            contacts = new LinkedList<Contact>(sortedContacts);
+        }
+
         static LinkedList<Contact> Search(string state, LinkedList<AddressBookMain> addressBooks)
         {
             Dictionary<string, LinkedList<Contact>> addressBookDict = new Dictionary<string, LinkedList<Contact>>();
@@ -169,6 +175,13 @@ namespace AddressBook
             }
 
             addressBook.SortByName();
+            foreach (Contact i in addressBook.contacts)
+            {
+                Console.WriteLine(i);
+                Console.WriteLine("-------");
+            }
+
+            addressBook.SortByState();
             foreach (Contact i in addressBook.contacts)
             {
                 Console.WriteLine(i);
