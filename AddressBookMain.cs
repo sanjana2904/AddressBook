@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+
 
 namespace AddressBook
 {
@@ -11,6 +13,13 @@ namespace AddressBook
 
         public string name;
 
+
+        public void SortByName()
+        {
+           List<Contact> sortedContacts = contacts.OrderBy(c => c.firstName).ToList();
+            contacts = new LinkedList<Contact>(sortedContacts);
+        }
+          
         static LinkedList<Contact> Search(string state, LinkedList<AddressBookMain> addressBooks)
         {
             Dictionary<string, LinkedList<Contact>> addressBookDict = new Dictionary<string, LinkedList<Contact>>();
@@ -158,7 +167,15 @@ namespace AddressBook
                     Console.WriteLine("-------");
                 }
             }
-            return;
+
+            addressBook.SortByName();
+            foreach (Contact i in addressBook.contacts)
+            {
+                Console.WriteLine(i);
+                Console.WriteLine("-------");
+            }
+
+
 
             addressBook.contactsMap.Add("Vijay", contact1);
             addressBook.contactsMap.Add("Ajith", contact2);
