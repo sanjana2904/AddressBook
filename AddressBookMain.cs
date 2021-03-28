@@ -9,11 +9,28 @@ namespace AddressBook
         LinkedList<Contact> contacts = new LinkedList<Contact>();
         Dictionary<string, Contact> contactsMap = new Dictionary<string, Contact>();
 
+        public string name;
+
+
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to AddressBook" );
 
             AddressBookMain addressBook = new AddressBookMain();
+            AddressBookMain addressBook1 = new AddressBookMain();
+            AddressBookMain addressBook2 = new AddressBookMain();
+
+            addressBook.name = "Home";
+            addressBook1.name = "Business";
+            addressBook2.name = "Personal";
+
+            Dictionary<string, AddressBookMain> addressBookDict = new Dictionary<string, AddressBookMain>();
+
+
+            addressBookDict.Add("Home", addressBook);
+            addressBookDict.Add("Business", addressBook1);
+            addressBookDict.Add("Personal", addressBook2);
+
 
             Contact contact1 = new Contact();
             Contact contact2 = new Contact();
