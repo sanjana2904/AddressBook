@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace AddressBook
@@ -25,6 +26,30 @@ namespace AddressBook
            public string zip;
            public string phoneNumber;
            public string email;       */
+
+
+        public void Initialize(string path)
+        {
+            if (File.Exists(path))
+            {
+                Console.WriteLine("File exists");
+                String[] lines;
+                lines = File.ReadAllLines(path);
+                firstName = lines[0];
+                lastName = lines[1];
+                address = lines[2];
+                city = lines[3];
+                state = lines[4];
+                zip = lines[5];
+                phoneNumber = lines[6];
+                email = lines[7];
+            }
+            else
+            {
+                Console.WriteLine("File not exist");
+            }
+
+        }
 
         public override string ToString()
         {
