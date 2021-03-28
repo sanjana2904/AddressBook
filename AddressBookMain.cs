@@ -150,6 +150,8 @@ namespace AddressBook
             }
             else
             {
+                Console.WriteLine(" Number of person in state " + state + " is " + result.Count);
+
                 foreach (Contact i in result)
                 {
                     i.Print();
