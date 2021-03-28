@@ -11,6 +11,37 @@ namespace AddressBook
 
         public string name;
 
+        static LinkedList<Contact> Search(string state, LinkedList<AddressBookMain> addressBooks)
+        {
+            Dictionary<string, LinkedList<Contact>> addressBookDict = new Dictionary<string, LinkedList<Contact>>();
+            foreach (AddressBookMain addressBook in addressBooks)
+            {
+                foreach (Contact i in addressBook.contacts)
+                {
+                    string s = i.state;
+                    if (addressBookDict.ContainsKey(s))
+                    {
+                        addressBookDict[s].AddLast(i);
+                    }
+                    else
+                    {
+                        LinkedList<Contact> list = new LinkedList<Contact>();
+                        list.AddLast(i);
+                        addressBookDict.Add(s, list);
+                    }
+                }
+            }
+           
+            if(addressBookDict.ContainsKey(state))
+            {
+                return addressBookDict[state];
+            }
+            else
+            {
+                return null;
+            }
+        }
+
 
         static void Main(string[] args)
         {
@@ -105,6 +136,27 @@ namespace AddressBook
                 Console.WriteLine("Not Added contact4");
             }
 
+            string state = "Tamilnadu";
+            LinkedList<AddressBookMain> addressBooks = new LinkedList<AddressBookMain>();
+            addressBooks.AddLast(addressBook);
+            addressBooks.AddLast(addressBook1);
+            addressBooks.AddLast(addressBook2);
+
+
+            LinkedList<Contact> result = Search(state, addressBooks);
+            if(result == null)
+            {
+                Console.WriteLine("contacts are not available");
+            }
+            else
+            {
+                foreach (Contact i in result)
+                {
+                    i.Print();
+                    Console.WriteLine("-------");
+                }
+            }
+            return;
 
             addressBook.contactsMap.Add("Vijay", contact1);
             addressBook.contactsMap.Add("Ajith", contact2);
@@ -113,11 +165,11 @@ namespace AddressBook
 
             foreach (Contact i in addressBook.contacts)
             {
-                i.Print();
+                //i.Print();
                 Console.WriteLine("-------");
             }
 
-           Console.WriteLine("Enter the name to delete :");
+            Console.WriteLine("Enter the name to delete :");
             string deleteName = Console.ReadLine();
 
             if (addressBook.contactsMap.ContainsKey(deleteName))
@@ -129,7 +181,7 @@ namespace AddressBook
 
             foreach (Contact i in addressBook.contacts)
             {
-                i.Print();
+               // i.Print();
                 Console.WriteLine("-------");
             }
 
