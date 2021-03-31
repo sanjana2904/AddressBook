@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
+using CsvHelper;
 
 
 namespace AddressBook
@@ -57,14 +60,46 @@ namespace AddressBook
             }
         }
 
+        public void readCSV(string path)
+        {
+            //reading csv file
+            using (var reader = new StreamReader(path))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                var records = csv.GetRecords<Contact>().ToList();
+                Console.WriteLine("Read data successfully from addresses csv.");
+                foreach (Contact contact in records)
+                {
+                    Console.WriteLine(contact);
+                }
+            }
+        }
+
+        public void writeCSV(string path)
+        {
+            //writing csv file
+            using (var writer = new StreamWriter(path))
+            using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            {
+                csv.WriteRecords(contacts);
+            }
+        }
+
 
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to AddressBook" );
 
+           
+
             AddressBookMain addressBook = new AddressBookMain();
             AddressBookMain addressBook1 = new AddressBookMain();
             AddressBookMain addressBook2 = new AddressBookMain();
+
+            addressBook.readCSV("C:\\Users\\sanja\\source\\repos\\AddressBook\\utility\\Addresses.csv");
+            
+            
+
 
             addressBook.name = "Home";
             addressBook1.name = "Business";
@@ -125,7 +160,10 @@ namespace AddressBook
 
 
 
+
             addressBook.contacts.AddLast(contact1);
+
+
 
             if (addressBook.contacts.Find(contact2) == null)
             {
@@ -157,6 +195,10 @@ namespace AddressBook
             {
                 Console.WriteLine("Not Added contact4");
             }
+
+
+            addressBook.writeCSV("C:\\Users\\sanja\\source\\repos\\AddressBook\\utility\\export.csv");
+           
 
             string state = "Tamilnadu";
             LinkedList<AddressBookMain> addressBooks = new LinkedList<AddressBookMain>();
