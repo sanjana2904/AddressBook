@@ -4,7 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using CsvHelper;
-
+using Newtonsoft.Json;
 
 namespace AddressBook
 {
@@ -85,6 +85,29 @@ namespace AddressBook
             }
         }
 
+
+        public void readJSON(string path)
+        {
+            string jsonText = File.ReadAllText(path);
+            List<Contact> contacts = JsonConvert.DeserializeObject<List<Contact>>(jsonText);
+            //Contact c = JsonConvert.DeserializeObject<Contact>(jsonText);
+            foreach (Contact i in contacts)
+            {
+                Console.WriteLine(i);
+                Console.WriteLine("-------");
+            }
+        }
+
+
+        public void writeJSON(string path)
+        {
+            JsonSerializer serializer = new JsonSerializer();
+            using (StreamWriter sw = new StreamWriter(path))
+            using (JsonWriter writer = new JsonTextWriter(sw))
+            {
+                serializer.Serialize(writer, contacts);
+            }
+        }
 
         static void Main(string[] args)
         {
@@ -198,7 +221,12 @@ namespace AddressBook
 
 
             addressBook.writeCSV("C:\\Users\\sanja\\source\\repos\\AddressBook\\utility\\export.csv");
-           
+            addressBook.readJSON("C:\\Users\\sanja\\source\\repos\\AddressBook\\utility\\JsonRead.txt");
+            addressBook.writeJSON("C:\\Users\\sanja\\source\\repos\\AddressBook\\utility\\JsonWrite.txt");
+            return;
+        
+
+
 
             string state = "Tamilnadu";
             LinkedList<AddressBookMain> addressBooks = new LinkedList<AddressBookMain>();

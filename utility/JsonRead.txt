@@ -1,0 +1,22 @@
+[
+	{
+	'firstName': 'sanjana',
+	'lastName': 'k',
+	'address': 'Chennai Byepass Road',
+	'city': 'Hosur',
+	'State': 'TamilNadu',
+	'pincode': '635001',
+	'phoneNumber': '901234567',
+	'email': 'sanjubridgelabz@gmail.com'
+	},
+	{
+	'firstName': 'Karthick',
+	'lastName': 'k',
+	'address': 'Silk Board',
+	'city': 'Bangalore',
+	'State': 'Karnataka',
+	'pincode': '635002',
+	'phoneNumber': '901237777',
+	'email': 'karthibridgelabz@gmail.com'
+	}
+]
