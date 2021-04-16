@@ -113,7 +113,8 @@ namespace AddressBook
         {
             Console.WriteLine("Welcome to AddressBook" );
 
-           
+            AddressBookRepo addressbookrepo = new AddressBookRepo();
+            addressbookrepo.GetAddressBook();
 
             AddressBookMain addressBook = new AddressBookMain();
             AddressBookMain addressBook1 = new AddressBookMain();
@@ -221,8 +222,8 @@ namespace AddressBook
 
 
             addressBook.writeCSV("C:\\Users\\sanja\\source\\repos\\AddressBook\\utility\\export.csv");
-            addressBook.readJSON("C:\\Users\\sanja\\source\\repos\\AddressBook\\utility\\JsonRead.txt");
-            addressBook.writeJSON("C:\\Users\\sanja\\source\\repos\\AddressBook\\utility\\JsonWrite.txt");
+            addressBook.readJSON("C:\\Users\\sanja\\source\\repos\\AddressBook\\utility\\JsonRead.json");
+            addressBook.writeJSON("C:\\Users\\sanja\\source\\repos\\AddressBook\\utility\\JsonWrite.json");
             return;
         
 
