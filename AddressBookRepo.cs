@@ -60,17 +60,45 @@ namespace AddressBook
                 SqlCommand cmd = new SqlCommand(query, connection);
                 connection.Open();
                 cmd.Parameters.Add("@FirstName", SqlDbType.VarChar).Value = contact.firstName;
-                    cmd.Parameters.Add("@LastName", SqlDbType.VarChar).Value = contact.lastName;
-                    cmd.Parameters.Add("@Address", SqlDbType.VarChar).Value = contact.address;
-                    cmd.Parameters.Add("@City", SqlDbType.VarChar).Value = contact.city;
-                    cmd.Parameters.Add("@State", SqlDbType.VarChar).Value = contact.state;
-                    cmd.Parameters.Add("@Zip", SqlDbType.Int).Value = contact.zip;
-                    cmd.Parameters.Add("@PhoneNumber", SqlDbType.VarChar).Value = contact.phoneNumber;
-                    cmd.Parameters.Add("@Email", SqlDbType.VarChar).Value = contact.email;
-                    cmd.ExecuteNonQuery();
+                cmd.Parameters.Add("@LastName", SqlDbType.VarChar).Value = contact.lastName;
+                cmd.Parameters.Add("@Address", SqlDbType.VarChar).Value = contact.address;
+                cmd.Parameters.Add("@City", SqlDbType.VarChar).Value = contact.city;
+                cmd.Parameters.Add("@State", SqlDbType.VarChar).Value = contact.state;
+                cmd.Parameters.Add("@Zip", SqlDbType.Int).Value = contact.zip;
+                cmd.Parameters.Add("@PhoneNumber", SqlDbType.VarChar).Value = contact.phoneNumber;
+                cmd.Parameters.Add("@Email", SqlDbType.VarChar).Value = contact.email;
+                cmd.ExecuteNonQuery();
                 connection.Close();
             }
 
         }
+        public void Update(String currentFirstName, String newFirstName)
+        {
+            SqlConnection connection = new SqlConnection(connectionString);
+            using (connection)
+            {
+                string query = "UPDATE AddressBookTable SET firstName = @NewFirstName WHERE firstName = @CurrentFirstName";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                connection.Open();
+                cmd.Parameters.Add("@NewFirstName", SqlDbType.VarChar).Value = newFirstName;
+                cmd.Parameters.Add("@CurrentFirstName", SqlDbType.VarChar).Value = currentFirstName;
+                cmd.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
+        public void Delete(String lastName)
+        {
+            SqlConnection connection = new SqlConnection(connectionString);
+            using (connection)
+            {
+                string query = "DELETE FROM AddressBookTable WHERE lastName = @LastName ";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                connection.Open();
+                cmd.Parameters.Add("@LastName", SqlDbType.VarChar).Value = lastName;
+                cmd.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
+
     }
 }

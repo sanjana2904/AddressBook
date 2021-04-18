@@ -128,9 +128,12 @@ namespace AddressBook
             contact.phoneNumber = "9988776655";
             contact.email = "aaa123@gmail.com";
 
-            addressbookrepo.Create(contact);
+            // addressbookrepo.Create(contact);
             addressbookrepo.GetAddressBook();
+            addressbookrepo.Update("sanjana", "Anusha" );
+            addressbookrepo.Delete("K");      
             return;
+
 
             AddressBookMain addressBook = new AddressBookMain();
             AddressBookMain addressBook1 = new AddressBookMain();
