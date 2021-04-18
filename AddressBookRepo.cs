@@ -100,5 +100,31 @@ namespace AddressBook
             }
         }
 
+        public void GetContacts(DateTime fromDate, DateTime toDate)
+        {
+            SqlConnection connection = new SqlConnection(connectionString);
+            using (connection)
+            {
+                string query = "SELECT * FROM AddressBookTable WHERE dateAdded >= @FromDate AND dateAdded < @ToDate ";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                connection.Open();
+                cmd.Parameters.Add("@FromDate", SqlDbType.Date).Value = fromDate;
+                cmd.Parameters.Add("@ToDate", SqlDbType.Date).Value = toDate;
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        Console.WriteLine(dr.GetString(0));
+                       
+                    }
+                }
+                else
+                {
+                    System.Console.WriteLine("No data found");
+                }
+                connection.Close();
+            }
+        }
     }
 }

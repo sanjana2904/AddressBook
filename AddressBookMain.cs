@@ -129,9 +129,12 @@ namespace AddressBook
             contact.email = "aaa123@gmail.com";
 
             // addressbookrepo.Create(contact);
-            addressbookrepo.GetAddressBook();
-            addressbookrepo.Update("sanjana", "Anusha" );
-            addressbookrepo.Delete("K");      
+            //addressbookrepo.GetAddressBook();
+            //addressbookrepo.Update("sanjana", "Anusha" );
+            //addressbookrepo.Delete("K");
+            DateTime fromDate = DateTime.Parse("2021-04-16");
+            DateTime toDate = DateTime.Parse("2021-04-19");
+           addressbookrepo.GetContacts(fromDate, toDate);
             return;
 
 
