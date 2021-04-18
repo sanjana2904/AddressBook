@@ -126,5 +126,33 @@ namespace AddressBook
                 connection.Close();
             }
         }
+        public void CountContacts(string city)
+        {
+            SqlConnection connection = new SqlConnection(connectionString);
+            using (connection)
+            {
+                string query = "SELECT COUNT(*) FROM AddressBookTable where city = @City ";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                connection.Open();
+                cmd.Parameters.Add("@City", SqlDbType.VarChar).Value = city;
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        Console.WriteLine(dr.GetInt32(0));
+
+                    }
+                }
+                else
+                {
+                    System.Console.WriteLine("No data found");
+                }
+                connection.Close();
+            }
+        }
+
     }
+    
 }
+   
