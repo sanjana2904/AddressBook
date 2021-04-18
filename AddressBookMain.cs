@@ -113,8 +113,24 @@ namespace AddressBook
         {
             Console.WriteLine("Welcome to AddressBook" );
 
+           
+
             AddressBookRepo addressbookrepo = new AddressBookRepo();
+            //addressbookrepo.GetAddressBook();
+            Contact contact = new Contact();
+      
+            contact.firstName = "sanjana";
+            contact.lastName = "k";
+            contact.address = "Chennai Highways";
+            contact.city = "Krishnagiri";
+            contact.state = "TamilNadu";
+            contact.zip = 635001;
+            contact.phoneNumber = "9988776655";
+            contact.email = "aaa123@gmail.com";
+
+            addressbookrepo.Create(contact);
             addressbookrepo.GetAddressBook();
+            return;
 
             AddressBookMain addressBook = new AddressBookMain();
             AddressBookMain addressBook1 = new AddressBookMain();
@@ -147,7 +163,7 @@ namespace AddressBook
             contact1.address = "2/101, ram street";
             contact1.city = "Bangalore";           
             contact1.state = "Karnataka";          
-            contact1.zip = "605001";          
+            contact1.zip = 605001;          
             contact1.phoneNumber = "123456789";
             contact1.email = "aaa@gmail.com";
 
@@ -156,7 +172,7 @@ namespace AddressBook
             contact2.address = "3/101, ram street";
             contact2.city = "Chennai";
             contact2.state = "Tamilnadu";
-            contact2.zip = "605002";
+            contact2.zip = 605002;
             contact2.phoneNumber = "7653289";
             contact2.email = "bbb@gmail.com";
 
@@ -165,7 +181,7 @@ namespace AddressBook
             contact3.address = "4/101, ram street";
             contact3.city = "Hyderabad";
             contact3.state = "Telengana";
-            contact3.zip = "6764636";
+            contact3.zip = 6764636;
             contact3.phoneNumber = "6575753289";
             contact3.email = "ccc@gmail.com";
 
@@ -174,7 +190,7 @@ namespace AddressBook
             contact4.address = "3/654, ram street";
             contact4.city = "Hosur";
             contact4.state = "Tamilnadu";
-            contact4.zip = "605746";
+            contact4.zip = 605746;
             contact4.phoneNumber = "76335629";
             contact4.email = "ddd@gmail.com";
 
