@@ -14,7 +14,7 @@ namespace AddressBook
         public string address { get; set; }
         public string city { get; set; }
         public string state { get; set; }
-        public string zip { get; set; }
+        public int zip { get; set; }
         public string phoneNumber { get; set; }
         public string email { get; set; }
 
@@ -40,7 +40,7 @@ namespace AddressBook
                 address = lines[2];
                 city = lines[3];
                 state = lines[4];
-                zip = lines[5];
+                zip = Int32.Parse(lines[5]);
                 phoneNumber = lines[6];
                 email = lines[7];
             }
